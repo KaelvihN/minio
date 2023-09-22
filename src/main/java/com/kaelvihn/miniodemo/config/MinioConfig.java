@@ -1,0 +1,33 @@
+package com.kaelvihn.miniodemo.config;
+
+
+import io.minio.MinioClient;
+import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+/**
+ * @author : KaelvihN
+ * @date : 2023/9/22 16:05
+ */
+@Data
+@Configuration
+@ConfigurationProperties(prefix = "minio")
+public class MinioConfig {
+    private String accessKey;
+    private String secretKey;
+    private String endpoint;
+
+    private String bucketName;
+
+    @Bean
+    public MinioClient buildMinioClient(){
+        return MinioClient
+                .builder()
+                .credentials(accessKey, secretKey)
+                .endpoint(endpoint)
+                .build();
+    }
+}

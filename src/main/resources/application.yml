@@ -1,0 +1,5 @@
+minio:
+  endpoint: http://47.115.228.3:9000/
+  accessKey: OxQs569MpwqEmyOK
+  secretKey: HvnjeFPUVPXjJE0xlsVRnQYHQ6yOYYOf
+  bucketName: linkstart
